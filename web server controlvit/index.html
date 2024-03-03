@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTROLVIT</title>
+    <style>
+
+        body {
+            background-color: #d8d8d8; /* Fondo  claro */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif; /* Cambio de tipografía */
+            display: block;
+        }
+        .header-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(12, 12, 12);
+            text-anchor: middle;
+            font-family: sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .container{
+            display: flex;
+            align-items:center;
+            justify-content: space-around;
+
+        }
+     
+        .container-card{
+            margin-top: 60px;
+            display:flex  ;
+            justify-content:space-around;
+        }
+        .card{
+            background-color: #fff; /* Tarjeta blanca */
+            border-radius: 20px; /* Bordes redondeados */
+            display: flex;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 215px;
+            height: 215px;
+            margin-left: 20px;
+            
+        }
+        .card-text{
+            background-color: #fff; /* Tarjeta blanca */
+            border-radius: 20px; /* Bordes redondeados */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 215px;
+            height: 215px;
+            margin-left: 20px;
+
+            
+        }
+        .card-titulo{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(129, 129, 129);
+            text-anchor: middle;
+            font-family: sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .card-value{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(12, 12, 12);
+            text-anchor:middle;
+            font-family: sans-serif;
+            font-size: 40px;
+            font-weight: bold;
+
+        }
+        .card-senal{
+            font-size: 20px;
+            font-family: sans-serif;
+            align-items: center;
+        }
+        .card-item-senal{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+
+        }
+        .gauge {
+        width: 205px;
+        height: 205px;
+    }
+
+    @media screen and (max-width: 430px){
+        
+        .container-card{
+            margin-top: 60px;
+            display:block;  
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card{
+            width: 115px;
+            height: 115px;
+            margin-top: 10px;
+        }
+
+
+        .card-text{
+            margin-top: 20px;
+            width: 115px;
+            height: 115px;
+
+
+        }
+
+        .gauge { 
+        width: 105px;
+        height: 105px;
+         }
+
+         .card-titulo{
+            font-size: 10px;
+
+
+         }
+         .card-value{
+            font-size: 20px;
+
+         }
+         .card-senal{
+            font-size: 10px;
+
+         }
+
+
+
+    }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <p>CONTROLVIT <samp>CV-30</samp></p>
+    </div>
+
+
+<div class="container">
+
+    <div class="container-card">
+        <div class="card">
+            <div id="hz" class="gauge"></div>
+        </div>
+
+
+      
+        <div class="card">
+            <div id="velocidad" class="gauge"></div>
+
+        </div>
+    </div>
+
+
+    <div class="container-card">
+
+        <div class="card-text">
+            <div class="card-titulo">
+                <p>Estado</p>
+            </div>
+            <div class="card-value">
+                <p>OK</p>
+            </div>
+            
+        </div>
+
+        <div class="card-text">
+            <div class="card-titulo">
+                <p>CO2</p>
+            </div>
+            <div class="card-value">
+                <p>OK</p>
+            </div>
+            
+        </div>
+
+
+        
+    </div>
+
+</div>
+
+<div class="container">
+
+
+    <div class="container-card">
+
+        <div class="card-text">
+            <div class="card-titulo">
+                <p>Tension de salida</p>
+            </div>
+            <div class="card-value">
+                <p>230v</p>
+            </div>
+            
+        </div>
+
+        <div class="card-text">
+            <div class="card-titulo">
+                <p>Intensidad de salida</p>
+            </div>
+            <div class="card-value">
+                <p>10A</p>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <div class="container-card">
+
+
+        <div class="card-text">
+            <div class="card-titulo">
+                <p>tension del bus dc 3002H</p>
+            </div>
+            <div class="card-value">
+                <p>411V</p>
+            </div>
+            
+        </div>
+
+        <div class="card-text">
+            <div class="card-titulo">
+                <p>Estado señales</p>
+            </div>
+            <div class="card-senal">
+                <div class="card-item-senal">
+                    <p>A1:</p>
+                    <p> 2.3V</p>
+                </div>
+                
+                <div class="card-item-senal">
+                    <p>A2:</p>
+                    <p> 1.8V</p>
+                </div>
+                <div class="card-item-senal">
+                    <p>A3:</p>
+                    <p> 0.0V</p>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+</div>
+
+ 
+
+
+<script src="./raphael-2.1.4.min.js"></script>
+<script src="./justgage.js"></script>
+<script>
+    var g = new JustGage({
+      id: "hz",
+      title: "Frecuencia",
+            value: 50.33,
+            min: 0,
+            max: 100,
+            donut: true,
+            gaugeWidthScale: 0.4,
+            counter: true,
+            hideInnerShadow: true,
+            label: "Hz",
+            //relativeGaugeSize: true, graficos responsive
+            formatNumber: true,
+            customSectors: [{
+        color : "#ff0000",
+        lo : 0,
+        hi : 30
+      },{
+        color : "#ff0000",
+        lo : 30,
+        hi : 36
+      },{
+        color : "#00ff00",
+        lo : 36,
+        hi : 100
+      }],
+
+    });
+
+    var g = new JustGage({
+      id: "velocidad",
+      title: "Velocidad",
+            value: 259,
+            min: 0,
+            max: 65535,
+            donut: true,
+            gaugeWidthScale: 0.4,
+            counter: true,
+            hideInnerShadow: true,
+            label: "RPM",
+            //relativeGaugeSize: true, graficos responsive
+            formatNumber: true,
+            customSectors: [{
+        color : "#ff0000",
+        lo : 0,
+        hi : 30
+      },{
+        color : "#ff0000",
+        lo : 30,
+        hi : 36
+      },{
+        color : "#00ff00",
+        lo : 36,
+        hi : 65535
+      }],
+
+    });
+  </script>
+  
+</body>
