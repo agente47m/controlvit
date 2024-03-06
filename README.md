@@ -6,21 +6,20 @@ Este proyecto consiste en monitorizar los varidores de frecuencia y poder accede
 
 ## Caracteristicas
 
-- Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform
+- Monitorizacion Variador de frecuencia
+- Calcular el ahorro de CO2 (solo en modelos fotovoltaicos)
+- API
 
 
 ## FAQ
 
-#### Question 1
+#### ¿Cual es la contraseña de al wifi CONTROLVIT?
 
-Answer 1
+La contraseña es 123456789
 
-#### Question 2
+#### Como puedo sacar los datos del variador para gestionarlos en mi propio sistema
 
-Answer 2
+Tenemos una peticion HTTP GET que nos retorna un JSON con todos los datos del variador. La URL es IP/api
 
 
 ## Configuracion hardware
