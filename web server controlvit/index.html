@@ -187,7 +187,7 @@
                 <p>CO2</p>
             </div>
             <div class="card-value">
-                <p>OK</p>
+                <p>2,33 kg</p>
             </div>
             
         </div>
@@ -250,7 +250,7 @@
                 
                 <div class="card-item-senal">
                     <p>A2:</p>
-                    <p> 1.8V</p>
+                    <p id="A2"> 1.8V</p>
                 </div>
                 <div class="card-item-senal">
                     <p>A3:</p>
@@ -269,6 +269,7 @@
 <script src="./raphael-2.1.4.min.js"></script>
 <script src="./justgage.js"></script>
 <script>
+    //definimos graficos
     var g = new JustGage({
       id: "hz",
       title: "Frecuencia",
@@ -326,6 +327,33 @@
       }],
 
     });
-  </script>
+
+// definimos programa
+const rele1=document.getElementById("A2")
+
+
+function consultaGet(){
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+           if (xmlhttp.status == 200) {
+              updateCounterUI(xmlhttp.responseText);
+           }
+           else {
+              console.log('error', xmlhttp);
+           }
+        }
+    };
+    xmlhttp.open("GET", "GetValoresESP", true);//GetValoresESP TIENE QUE SER UN ENDPOINT DEFINIDO EN NUESTRA ESP32
+    xmlhttp.send();
+
+    }
+    /*
+    (function scheduleAjax() {
+    consultaGet();                         funcion EJECUTAR LA FUNCION CADA SEGUNDO
+    setTimeout(scheduleAjax, 1000);
+})();
+/*/ 
+</script>
   
 </body>
