@@ -150,7 +150,7 @@
 <body>
 
     <div class="header-container">
-        <p>CONTROLVIT <samp>CV-30</samp></p>
+        <p>CONTROLVIT <samp id="modelo">CV-30</samp></p>
     </div>
 
 
@@ -177,7 +177,7 @@
                 <p>Estado</p>
             </div>
             <div class="card-value">
-                <p>OK</p>
+                <p id="estado">OK</p>
             </div>
             
         </div>
@@ -187,7 +187,7 @@
                 <p>CO2</p>
             </div>
             <div class="card-value">
-                <p>2,33 kg</p>
+                <p id="co2">2,33 kg</p>
             </div>
             
         </div>
@@ -208,7 +208,7 @@
                 <p>Tension de salida</p>
             </div>
             <div class="card-value">
-                <p>230v</p>
+                <p id="Tsalida">230v</p>
             </div>
             
         </div>
@@ -218,7 +218,7 @@
                 <p>Intensidad de salida</p>
             </div>
             <div class="card-value">
-                <p>10A</p>
+                <p id="Isalida">10A</p>
             </div>
             
         </div>
@@ -233,7 +233,7 @@
                 <p>tension del bus dc 3002H</p>
             </div>
             <div class="card-value">
-                <p>411V</p>
+                <p id="Tbus">411V</p>
             </div>
             
         </div>
@@ -245,7 +245,7 @@
             <div class="card-senal">
                 <div class="card-item-senal">
                     <p>A1:</p>
-                    <p> 2.3V</p>
+                    <p id="A1"> 2.3V</p>
                 </div>
                 
                 <div class="card-item-senal">
@@ -254,7 +254,7 @@
                 </div>
                 <div class="card-item-senal">
                     <p>A3:</p>
-                    <p> 0.0V</p>
+                    <p id="A3"> 0.0V</p>
                 </div>
             </div>
             
@@ -329,7 +329,17 @@
     });
 
 // definimos programa
-const rele1=document.getElementById("A2")
+const a1=document.getElementById("A1");
+const a2=document.getElementById("A2");
+const a3=document.getElementById("A3");
+const Tbus=document.getElementById("Tbus");
+const Isalida=document.getElementById("Isalida");
+const Tsalida=document.getElementById("Tsalida");
+const co2=document.getElementById("co2");
+const estado=document.getElementById("estado");
+const modelo=document.getElementById("modelo");
+
+//const frecuencia=document.getElementById("frecuencia");
 
 
 function consultaGet(){
@@ -337,7 +347,10 @@ function consultaGet(){
         xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == XMLHttpRequest.DONE) {
            if (xmlhttp.status == 200) {
-              updateCounterUI(xmlhttp.responseText);
+              let data= JOSN.parse(xmlhttp.responseText);
+              estado.innerText="RUN";
+              //estado.innerText=data.estado;
+
            }
            else {
               console.log('error', xmlhttp);
