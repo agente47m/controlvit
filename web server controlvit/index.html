@@ -7,7 +7,7 @@
     <style>
 
         body {
-            background-color: #d8d8d8; /* Fondo  claro */
+            background-color: #f0f0f0; /* Fondo  claro */
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -19,11 +19,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgb(12, 12, 12);
+            color: rgb(255, 255, 255);
             text-anchor: middle;
             font-family: sans-serif;
             font-size: 20px;
             font-weight: bold;
+            background-color: #cb302d;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            padding-top: 10px;
         }
 
         .container{
@@ -114,6 +118,7 @@
 
 
         .card-text{
+            margin-right: 20px;
             margin-top: 20px;
             width: 115px;
             height: 115px;
@@ -150,24 +155,37 @@
 <body>
 
     <div class="header-container">
-        <p>CONTROLVIT <samp id="modelo">CV-30</samp></p>
+        <p id="modelo">CONTROLVIT </p>
     </div>
 
 
 <div class="container">
 
-    <div class="container-card">
-        <div class="card">
-            <div id="hz" class="gauge"></div>
+<div class="container-card">
+
+ 
+    <div class="card-text">
+        <div class="card-titulo">
+            <p>Frecuencia</p>
         </div>
-
-
-      
-        <div class="card">
-            <div id="velocidad" class="gauge"></div>
-
+        <div class="card-value">
+            <p id="hz">-</p>
         </div>
+        
     </div>
+
+    <div class="card-text">
+        <div class="card-titulo">
+            <p>RPM</p>
+        </div>
+        <div class="card-value">
+            <p id="RPM">-</p>
+        </div>
+        
+    </div>
+</div>
+
+
 
 
     <div class="container-card">
@@ -230,7 +248,7 @@
 
         <div class="card-text">
             <div class="card-titulo">
-                <p>tension del bus dc 3002H</p>
+                <p>Tension bus dc</p>
             </div>
             <div class="card-value">
                 <p id="Tbus">411V</p>
@@ -264,69 +282,7 @@
 </div>
 
  
-
-
-<script src="./raphael-2.1.4.min.js"></script>
-<script src="./justgage.js"></script>
 <script>
-    //definimos graficos
-    var g = new JustGage({
-      id: "hz",
-      title: "Frecuencia",
-            value: 50.33,
-            min: 0,
-            max: 100,
-            donut: true,
-            gaugeWidthScale: 0.4,
-            counter: true,
-            hideInnerShadow: true,
-            label: "Hz",
-            //relativeGaugeSize: true, graficos responsive
-            formatNumber: true,
-            customSectors: [{
-        color : "#ff0000",
-        lo : 0,
-        hi : 30
-      },{
-        color : "#ff0000",
-        lo : 30,
-        hi : 36
-      },{
-        color : "#00ff00",
-        lo : 36,
-        hi : 100
-      }],
-
-    });
-
-    var g = new JustGage({
-      id: "velocidad",
-      title: "Velocidad",
-            value: 259,
-            min: 0,
-            max: 65535,
-            donut: true,
-            gaugeWidthScale: 0.4,
-            counter: true,
-            hideInnerShadow: true,
-            label: "RPM",
-            //relativeGaugeSize: true, graficos responsive
-            formatNumber: true,
-            customSectors: [{
-        color : "#ff0000",
-        lo : 0,
-        hi : 30
-      },{
-        color : "#ff0000",
-        lo : 30,
-        hi : 36
-      },{
-        color : "#00ff00",
-        lo : 36,
-        hi : 65535
-      }],
-
-    });
 
 // definimos programa
 const a1=document.getElementById("A1");
@@ -338,8 +294,8 @@ const Tsalida=document.getElementById("Tsalida");
 const co2=document.getElementById("co2");
 const estado=document.getElementById("estado");
 const modelo=document.getElementById("modelo");
-
-//const frecuencia=document.getElementById("frecuencia");
+const frecuencia=document.getElementById("hz");
+const rpm=document.getElementById("RPM");
 
 
 function consultaGet(){
@@ -347,26 +303,75 @@ function consultaGet(){
         xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == XMLHttpRequest.DONE) {
            if (xmlhttp.status == 200) {
-              let data= JOSN.parse(xmlhttp.responseText);
-              estado.innerText="RUN";
+                let data= JSON.parse(xmlhttp.responseText);
+                //estado.innerText=data.estado;
+                a1.innerText=data.A1 + "V";
+                a2.innerText=data.A2+ "V";
+                a3.innerText=data.A3+ "V";
+                Tbus.innerText=data.Tbus+ "V";
+                Isalida.innerText=data.Isalida+ "A";
+                Tsalida.innerText=data.Tsalida+ "V";
+                frecuencia.innerText=data.hz;
+                frecuencia.innerText=data.rpm;
+
+                co2.innerText="n/a";
+                switch(data.modelo){
+                    case 269:
+                    modelo.innerText="CONTROLVIT CV-10";
+                        break;
+                    case 262:
+                    modelo.innerText="CONTROLVIT CV-30";
+                        break;
+                    case 263:
+                    modelo.innerText="CONTROLVIT CV-50";
+                        break;
+                    default:
+                    modelo.innerText="CONTROLVIT na";
+                        break;
+                }
+
+                switch(data.estado){
+                    case 1:
+                    estado.innerText="Adelante";
+                    break;
+                    case 2:
+                    estado.innerText="Inverso";
+                    break;
+                    case 3:
+                    estado.innerText="Paro";
+                    break;
+                    case 4:
+                    estado.innerText="Fallo";
+                    break;
+                    case 5:
+                    estado.innerText="POFF";
+                    break;
+                    case 6:
+                    estado.innerText="Preexcitacion";
+                    break;
+                    default:
+                    estado.innerText="N/A";
+
+                    break;
+                }
+
               //estado.innerText=data.estado;
 
            }
            else {
               console.log('error', xmlhttp);
+              modelo.innerText=" ERROR COMUNICACION "
            }
         }
     };
-    xmlhttp.open("GET", "GetValoresESP", true);//GetValoresESP TIENE QUE SER UN ENDPOINT DEFINIDO EN NUESTRA ESP32
+    xmlhttp.open("GET", "data", true);//data TIENE QUE SER UN ENDPOINT DEFINIDO EN NUESTRA ESP32
     xmlhttp.send();
 
     }
-    /*
+
     (function scheduleAjax() {
-    consultaGet();                         funcion EJECUTAR LA FUNCION CADA SEGUNDO
+    consultaGet();                       //  funcion EJECUTAR LA FUNCION CADA SEGUNDO
     setTimeout(scheduleAjax, 1000);
-})();
-/*/ 
+    })();
 </script>
-  
 </body>
