@@ -281,6 +281,66 @@
     </div>
 </div>
 
+
+
+
+
+
+<div class="PV" style="display: none;">
+<div class="container">
+
+
+    <div class="container-card">
+
+        <div class="card-text" onclick="hideDivPv()">
+            <div class="card-titulo">
+                <p>Potencia Solar</p>
+            </div>
+            <div class="card-value">
+                <p id="Psolar">2.4 Kw</p>
+            </div>
+            
+        </div>
+
+        <div class="card-text">
+            <div class="card-titulo">
+                <p>Volumen extraido</p>
+            </div>
+            <div class="card-value">
+                <p id="Vextraido">10m3</p>
+            </div>
+            
+        </div>
+
+    </div>
+    <div class="container-card">
+
+        <div class="card-text" onclick="hideDivPv()">
+            <div class="card-titulo">
+                <p>Modo de trabajo</p>
+            </div>
+            <div class="card-value">
+                <p id="Mtrabajo">SOLAR</p>
+            </div>
+            
+        </div>
+
+        <div class="card-text">
+            <div class="card-titulo">
+                <p>Caudal extraido</p>
+            </div>
+            <div class="card-value">
+                <p id="Caudal">2 m3/h</p>
+            </div>
+            
+        </div>
+
+    </div>
+
+    
+</div>
+</div>
+
  
 <script>
 
@@ -297,6 +357,20 @@ const modelo=document.getElementById("modelo");
 const frecuencia=document.getElementById("hz");
 const rpm=document.getElementById("RPM");
 
+//variables del cv30-pv
+const Psolar=document.getElementById("Psolar");
+const Vextraido=document.getElementById("Vextraido");
+const DivSolar=document.getElementById("PV");
+const Mtrabajo=document.getElementById("Mtrabajo");
+const Caudal=document.getElementById("Caudal");
+
+
+function hideDivPv(){
+    DivSolar.style.display="none";
+}
+function showDivPv(){
+    DivSolar.style.display="block";
+}
 
 function consultaGet(){
         var xmlhttp = new XMLHttpRequest();
@@ -370,7 +444,11 @@ function consultaGet(){
     }
 
     (function scheduleAjax() {
-    consultaGet();                       //  funcion EJECUTAR LA FUNCION CADA SEGUNDO
+    try{
+    consultaGet();
+    }catch(err) {
+        console.log("error peticion...")
+    }              //  funcion EJECUTAR LA FUNCION CADA SEGUNDO
     setTimeout(scheduleAjax, 1000);
     })();
 </script>
