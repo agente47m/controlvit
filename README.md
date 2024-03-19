@@ -43,4 +43,36 @@ Conexion con el variador
 ```bash
   Jumper 4-> ON
 ```
+![Untitled](https://github.com/agente47m/controlvit/assets/14801079/7a169059-c211-4540-a094-88e79c98f2a4)
+
+## Parametros Modbus
+Para enviar los datos modbus las direcciones de los comandos se tiene que pasar a decimal 
+
+Por ejemplo 
+
+**P05.06**
+
+05 → 05(hexadecimal)
+
+06→ 06 (hexadecimal )
+
+la dirección sería **0506**
+
+**P10.01**
+
+10→ 0A
+
+01→ 01 
+
+LA DIRECCIÓN ES **0A01**
+
+## Parametros Modbus
+
+Hay que preconfigurar el variador
+
+P00.01→”canal de comando de operación mediante comunicación”= 2
+
+P00.02 →”canal comunicación modbus”
+
+P00.06→ 8
 
