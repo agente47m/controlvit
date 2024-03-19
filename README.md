@@ -76,3 +76,13 @@ P00.02 →”canal comunicación modbus”
 
 P00.06→ 8
 
+## Comandos Modbus
+- Estado del variador
+    - 1 = marcha hacia adelante
+    - 2= marcha sentido inverso
+    - 3= Paro
+    - 4= Fallo
+    - 5= estado POFF
+    - 6= Estado de preexcitacion
+
+
