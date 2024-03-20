@@ -29,7 +29,6 @@
             border-bottom-right-radius: 25px;
             padding-top: 10px;
         }
-
         .container{
             display: flex;
             align-items:center;
@@ -118,7 +117,6 @@
 
 
         .card-text{
-            margin-right: 20px;
             margin-top: 20px;
             width: 115px;
             height: 115px;
@@ -155,7 +153,7 @@
 <body>
 
     <div class="header-container">
-        <p id="modelo">CONTROLVIT </p>
+        <p>CONTROLVIT <samp id="modelo"> n/a</samp></p>
     </div>
 
 
@@ -281,66 +279,6 @@
     </div>
 </div>
 
-
-
-
-
-
-<div class="PV" style="display: none;">
-<div class="container">
-
-
-    <div class="container-card">
-
-        <div class="card-text" onclick="hideDivPv()">
-            <div class="card-titulo">
-                <p>Potencia Solar</p>
-            </div>
-            <div class="card-value">
-                <p id="Psolar">2.4 Kw</p>
-            </div>
-            
-        </div>
-
-        <div class="card-text">
-            <div class="card-titulo">
-                <p>Volumen extraido</p>
-            </div>
-            <div class="card-value">
-                <p id="Vextraido">10m3</p>
-            </div>
-            
-        </div>
-
-    </div>
-    <div class="container-card">
-
-        <div class="card-text" onclick="hideDivPv()">
-            <div class="card-titulo">
-                <p>Modo de trabajo</p>
-            </div>
-            <div class="card-value">
-                <p id="Mtrabajo">SOLAR</p>
-            </div>
-            
-        </div>
-
-        <div class="card-text">
-            <div class="card-titulo">
-                <p>Caudal extraido</p>
-            </div>
-            <div class="card-value">
-                <p id="Caudal">2 m3/h</p>
-            </div>
-            
-        </div>
-
-    </div>
-
-    
-</div>
-</div>
-
  
 <script>
 
@@ -357,20 +295,6 @@ const modelo=document.getElementById("modelo");
 const frecuencia=document.getElementById("hz");
 const rpm=document.getElementById("RPM");
 
-//variables del cv30-pv
-const Psolar=document.getElementById("Psolar");
-const Vextraido=document.getElementById("Vextraido");
-const DivSolar=document.getElementById("PV");
-const Mtrabajo=document.getElementById("Mtrabajo");
-const Caudal=document.getElementById("Caudal");
-
-
-function hideDivPv(){
-    DivSolar.style.display="none";
-}
-function showDivPv(){
-    DivSolar.style.display="block";
-}
 
 function consultaGet(){
         var xmlhttp = new XMLHttpRequest();
@@ -386,21 +310,21 @@ function consultaGet(){
                 Isalida.innerText=data.Isalida+ "A";
                 Tsalida.innerText=data.Tsalida+ "V";
                 frecuencia.innerText=data.hz;
-                frecuencia.innerText=data.rpm;
+                rpm.innerText=data.rpm;
 
                 co2.innerText="n/a";
                 switch(data.modelo){
                     case 269:
-                    modelo.innerText="CONTROLVIT CV-10";
+                    modelo.innerText=" CV-10";
                         break;
                     case 262:
-                    modelo.innerText="CONTROLVIT CV-30";
+                    modelo.innerText=" CV-30";
                         break;
                     case 263:
-                    modelo.innerText="CONTROLVIT CV-50";
+                    modelo.innerText=" CV-50";
                         break;
                     default:
-                    modelo.innerText="CONTROLVIT na";
+                    modelo.innerText=" na";
                         break;
                 }
 
@@ -434,7 +358,6 @@ function consultaGet(){
            }
            else {
               console.log('error', xmlhttp);
-              modelo.innerText=" ERROR COMUNICACION "
            }
         }
     };
@@ -444,11 +367,7 @@ function consultaGet(){
     }
 
     (function scheduleAjax() {
-    try{
-    consultaGet();
-    }catch(err) {
-        console.log("error peticion...")
-    }              //  funcion EJECUTAR LA FUNCION CADA SEGUNDO
+    consultaGet();                       //  funcion EJECUTAR LA FUNCION CADA SEGUNDO
     setTimeout(scheduleAjax, 1000);
     })();
 </script>
