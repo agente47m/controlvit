@@ -90,4 +90,8 @@ P00.06→ 8
     - 5= estado POFF
     - 6= Estado de preexcitacion
 
+## Fotografias
+Placa montada 
+
+![FO](https://github.com/agente47m/controlvit/assets/14801079/43b6f8d7-fc47-49c4-a4fc-30bb8b497b3b)
 
