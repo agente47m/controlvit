@@ -9,6 +9,11 @@ Este proyecto consiste en monitorizar los varidores de frecuencia y poder accede
 - Monitorizacion Variador de frecuencia
 - Calcular el ahorro de CO2 (solo en modelos fotovoltaicos)
 - API
+- ALIMENTACION 5V DC
+- ALIMENTACION 230V AC
+- DISPLAY CON INFORMACION DEL EQUIPO
+- COMUNICACION MODBUS RTU
+- ASISTENTE PARA CONFIGURAR WIFI 
 
 
 ## FAQ
