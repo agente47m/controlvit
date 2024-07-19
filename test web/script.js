@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
             scales: {
                 x: {
                     display: true,
+                    grid:{display:false},
                     title: {
                         display: true,
                         text: 'Hora'
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 y: {
                     display: true,
+                    grid:{display:false},
                     title: {
                         display: true,
                         text: 'Potencia (kW)'

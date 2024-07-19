@@ -34,7 +34,7 @@ header .back-button, header .menu-button {
 
 .navbar-inner {
     background-color: white;
-    border-radius: 15px;
+    border-radius: 25px;
     padding: 10px 20px;
     display: flex;
     gap: 20px;
@@ -105,7 +105,7 @@ hr {
 
 .animation-container {
     position: absolute;
-    top: 70px;
+    top: 40px;
     left: 0;
     right: 0;
     width: 100%;
@@ -114,29 +114,35 @@ hr {
 
 .dot {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background-color: currentColor;
 }
 
 .solar-to-inverter {
     background-color: #3d9970;
-    animation: solar-to-inverter 2s linear infinite;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+
+    animation: solar-to-inverter 3s linear infinite;
 }
 
 .inverter-to-grid {
     background-color: #ff4136;
-    animation: inverter-to-grid 2s linear infinite;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+
+    animation: inverter-to-grid 3s linear infinite;
 }
 
 .inverter-to-consumption {
     background-color: #0074d9;
-    animation: inverter-to-consumption 2s linear infinite;
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+
+    animation: inverter-to-consumption 3s linear infinite;
 }
 
 @keyframes solar-to-inverter {
-    0% { left: 20%; top: 50%; }
+    0% { left: 20%; top: 40%; }
     100% { left: 50%; top: 50%; }
 }
 
@@ -188,8 +194,8 @@ hr {
 }
 .cards {
     display: flex;
-    justify-content: space-around;
-    margin: 20px;
+    justify-content:space-between;
+   
 }
 
 .card {
